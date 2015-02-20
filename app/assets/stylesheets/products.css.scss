@@ -1,3 +1,41 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#sidebar-wrapper {
+  background-color: #f3f3f3;
+  padding: 25px;
+  .jumbotron{
+    font-size: 20px;
+    font-weight: normal;
+  }
+}
+#new-product-button{
+  margin-bottom: 20px;
+}
+.product-item {
+  .media{
+    padding-top: 10px;
+  }
+}
+.product-item :hover{
+  transition: background-color 0.5s ease-out;
+  background-color: lightgrey;
+  cursor: pointer;
+}
+
+#page-content-wrapper{
+  padding: 0px;
+  .product-name{
+    background-color: orange;
+    font-weight: bold;
+    margin:0px;
+    padding:30px 0px 5px 20px;
+  }
+  *{
+    margin: 20px;
+  }
+  button{
+    margin: 0px;
+  }
+}
