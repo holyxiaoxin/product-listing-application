@@ -34,7 +34,6 @@ $(function() {
             })
             .always(function(data){
                 console.log(JSON.stringify(data));
-                $('#new-product-button').blur();
             }, 'json');
     });
 
@@ -83,6 +82,10 @@ $(function() {
         })
             .done(function(data){
                 cloneToContentTemplate(data);
+                $sidebarItemContainer = $('#product-listing').find("[data-id='"+data['id']+"']");
+                console.log($sidebarItemContainer);
+                $sidebarItemContainer.find('.product-name').html(data['name']);
+                $sidebarItemContainer.find('.product-price').html(data['price']);
                 $('#editProductModal').modal('hide');
             })
             .fail(function(data){
@@ -115,6 +118,10 @@ $(function() {
         }else{
             $(this).blur();
         }
+    });
+
+    $('#newProductModal').on('shown.bs.modal', function(e){
+        $('#new-product-button').one('focus', function(e){$(this).blur();});
     });
 
     // Clear errors while closing dialog
