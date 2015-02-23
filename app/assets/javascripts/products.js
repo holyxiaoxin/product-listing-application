@@ -1,4 +1,5 @@
 $(function() {
+    // Create
     $('#save-new-product-button').on('click', function () {
         var name = $('#product-name').val();
         var price = $('#product-price').val();
@@ -38,7 +39,7 @@ $(function() {
     });
 
     var bodyContainer = $('body');
-    // Show
+    // Read
     bodyContainer.on('click', '.product-item', function(){
         var productId = $(this).data('id');
         $.get("/products/"+productId+".json")
@@ -50,7 +51,7 @@ $(function() {
                 alert(JSON.stringify(data));
             }, 'json');
     });
-    // Edit
+    // Update
     bodyContainer.on('click', '.edit-product-button', function() {
         var productId = $(this).parents('.product-content').data('id');
         $.get("/products/"+productId+".json")
@@ -120,6 +121,8 @@ $(function() {
         }
     });
 
+    // Blur button which triggers the modal,
+    // since it remains focus when modal closes
     $('#newProductModal').on('shown.bs.modal', function(e){
         $('#new-product-button').one('focus', function(e){$(this).blur();});
     });
@@ -130,6 +133,7 @@ $(function() {
     });
 });
 
+// Reflect data Object into page-content-wrapper from template
 function cloneToContentTemplate(data){
     var clone = $('#content-template').children().clone();
     clone.attr('data-id', data['id']);
