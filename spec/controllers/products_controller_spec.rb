@@ -21,7 +21,7 @@ describe ProductsController do
     it { expect(JSON.parse(response.body)).to include({
                                                           "id" => valid_product.id,
                                                           "name" => valid_product.name,
-                                                          "price" => valid_product.price,
+                                                          "price" => valid_product.price.to_s,
                                                           "description" => valid_product.description
                                                       }) }
   end

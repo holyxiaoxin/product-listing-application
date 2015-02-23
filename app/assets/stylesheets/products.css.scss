@@ -5,6 +5,8 @@
 #sidebar-wrapper {
   background-color: #f3f3f3;
   padding: 25px;
+  height: 100vh;
+  overflow-y: scroll;
   .jumbotron{
     font-size: 20px;
     font-weight: normal;
@@ -18,10 +20,13 @@
     padding-top: 10px;
   }
 }
-.product-item :hover{
-  transition: background-color 0.5s ease-out;
+.product-item:hover{
+  transition: background-color 0.3s ease-out;
   background-color: lightgrey;
   cursor: pointer;
+  .child {
+    transition: none;
+  }
 }
 
 #page-content-wrapper{
