@@ -34,7 +34,6 @@ $(function() {
                 $('#new-product-errors').html(errorMessage).addClass('alert').addClass('alert-danger');
             })
             .always(function(data){
-                console.log(JSON.stringify(data));
             }, 'json');
     });
 
@@ -70,12 +69,10 @@ $(function() {
     $('#edit-existing-product-button').on('click', function() {
         var productId = $(this).data('id');
         var $modalContentContainer = $(this).parents('.modal-content');
-        console.log($modalContentContainer);
         var product = {};
         product['name'] = $modalContentContainer.find('#product-name').val();
         product['price'] = $modalContentContainer.find('#product-price').val();
         product['description'] = $modalContentContainer.find('#product-description').val();
-        console.log(productId);
         $.ajax({
             url: "/products/"+productId+".json",
             type: "PUT",
@@ -84,13 +81,11 @@ $(function() {
             .done(function(data){
                 cloneToContentTemplate(data);
                 $sidebarItemContainer = $('#product-listing').find("[data-id='"+data['id']+"']");
-                console.log($sidebarItemContainer);
                 $sidebarItemContainer.find('.product-name').html(data['name']);
                 $sidebarItemContainer.find('.product-price').html(data['price']);
                 $('#editProductModal').modal('hide');
             })
             .fail(function(data){
-                console.log(JSON.stringify(data));
                 // Parse errors into alert div
                 var errors = data['responseJSON']['error'];
                 var errorMessage = errors.length+" error";
